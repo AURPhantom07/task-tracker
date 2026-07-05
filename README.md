@@ -12,48 +12,51 @@ cd tasktracker
 pip install -e .
 ```
 
-## How to use and examples
+# How to use and examples
 
-# Add a new task
+## Add a new task
 ```bash
 python -m tasktracker.cli add "Finish report" --priority 1 --due 2026-07-15
 ```
 
-# Add a recurring task
+## Add a recurring task
 ```bash
 python -m tasktracker.cli add "Weekly review" --priority 2 --due 2026-07-12 --interval 7
 ```
-# Add a subtask
+## Add a subtask
 
 ```bash
 python -m tasktracker.cli add "Write introduction" --parent "Finish report" --due 2026-07-10
 ```
 
-# List pending tasks
+## List pending tasks
 ```bash
 python -m tasktracker.cli list
 ```
 
-# Show task tree
+## Show task tree
 ```bash
 python -m tasktracker.cli show "Finish report"
 ```
 
 
-# Mark as done
+## Mark as done
 ```bash
 python -m tasktracker.cli done "Write introduction"
 ```
 
-# List all tasks (including done)
+## List all tasks (including done)
 ```bash
 python -m tasktracker.cli list --all
 ```
 
-# Get current weather for a city 
+## Get current weather for a city 
 ```bash
 python -m tasktracker.cli weather "Miami"
 ```
+# Architecture
+
+The application uses a clean object‑oriented design with a Task dataclass, RecurringTask inheritance, and a TaskList container. Tasks support arbitrary nesting via subtasks, enabling natural recursion for traversal and display.
 
 ```mermaid
 classDiagram
